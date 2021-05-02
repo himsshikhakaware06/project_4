@@ -1,0 +1,76 @@
+package in.co.rays.project_4.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import org.apache.log4j.Logger;
+
+import in.co.rays.project_4.bean.CoureBean;
+import in.co.rays.project_4.exception.DuplicateRecordsException;
+import in.co.rays.project_4.util.JDBCDataSource;
+
+public class CourseModel {
+	private static Logger log=Logger.getLogger(CourseModel.class);
+	
+	public Integer nextPK(){
+		Connection conn=null;
+		int pk=0;
+		try {
+			conn=JDBCDataSource.getConnection();
+			PreparedStatement pstmt=conn.prepareStatement("select max(ID) from st_course");
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				pk=rs.getInt(1);
+			}
+			rs.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+		return pk+1;
+		
+	}
+	public long add(CoureBean bean) throws DuplicateRecordsException{
+		log.debug("add debug started");
+		Connection conn=null;
+		int pk=0;
+		CoureBean Bean=new CoureBean();
+		//Bean=findByCourseName(bean.getCourseName());
+		if(Bean!=null)
+		{
+			throw new DuplicateRecordsException("course already exist...!!!");
+		}else{
+			try {
+			conn=JDBCDataSource.getConnection();
+			PreparedStatement pstmt=conn.prepareStatement("insert into st_course values(?,?,?,?,?,?,?)");
+			pk=nextPK();
+			pstmt.setLong(1, pk);
+			pstmt.setString(2, bean.getCourseName());
+			pstmt.setString(3, bean.getDescription());
+			pstmt.setString(4, bean.getCreatedBy());
+			pstmt.setString(5, bean.getModifiedBy());
+			pstmt.setTimestamp(6, bean.getCreatedDatetime());
+			pstmt.setTimestamp(7, bean.getModifiedDatetime());
+			
+			pstmt.executeUpdate();
+			System.out.println("Course Added");
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCDataSource.closeConnection(conn);
+		
+		}
+		
+		
+		
+		
+	return pk;
+		
+	
+	}
+}

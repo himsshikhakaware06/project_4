@@ -1,0 +1,19 @@
+package in.co.rays.project_4.controller;
+
+import javax.servlet.annotation.WebServlet;
+
+import org.apache.log4j.Logger;
+
+@WebServlet(name="CourseListCtl", urlPatterns="/ctl/CourseListCtl")
+public class CourseListCtl extends BaseCtl {
+	
+	private static Logger log=Logger.getLogger(CourseListCtl.class);
+	
+
+	@Override
+	protected String getView() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

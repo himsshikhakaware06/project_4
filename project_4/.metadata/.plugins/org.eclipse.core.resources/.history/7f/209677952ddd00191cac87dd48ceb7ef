@@ -1,0 +1,63 @@
+package in.co.rays.project_4.controller;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
+import in.co.rays.project_4.bean.BaseBean;
+import in.co.rays.project_4.bean.CourseBean;
+import in.co.rays.project_4.util.DataUtility;
+
+@WebServlet(name="CourseListCtl", urlPatterns="/ctl/CourseListCtl")
+public class CourseListCtl extends BaseCtl {
+	
+	private static Logger log=Logger.getLogger(CourseListCtl.class);
+	
+	protected BaseBean populateBean(HttpServletRequest request){
+		log.debug("CourseListCtl populatBean started");
+		
+		CourseBean bean= new CourseBean();
+		bean.setCourseName(DataUtility.getStringData(request.getParameter("CourseName")));
+		bean.setDescription(DataUtility.getStringData(request.getParameter("description")));
+		bean.setId(DataUtility.getLong(request.getParameter("id")));
+		
+		log.debug("CourseListCtl populateBean method ended");
+		return null;
+		
+	}
+	protected void goGet(HttpServletRequest request, HttpServletResponse response){
+		log.debug("CourseListCtl doGet method started");
+		
+		
+	}
+
+	@Override
+	protected String getView() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

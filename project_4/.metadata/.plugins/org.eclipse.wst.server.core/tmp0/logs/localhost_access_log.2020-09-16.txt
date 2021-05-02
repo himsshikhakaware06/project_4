@@ -1,0 +1,15 @@
+127.0.0.1 - - [16/Sep/2020:14:28:56 +0500] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:29:01 +0500] "GET /project_4/ HTTP/1.1" 200 810
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:29:07 +0500] "GET /project_4/WelcomeCtl HTTP/1.1" 200 2540
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:29:07 +0500] "GET /project_4/js/jquery.min.js HTTP/1.1" 200 95931
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:29:07 +0500] "GET /project_4/js/CheckBox11.js HTTP/1.1" 200 609
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:29:11 +0500] "GET /project_4/LoginCtl HTTP/1.1" 200 4412
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:30:29 +0500] "POST /project_4/LoginCtl HTTP/1.1" 200 4390
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:31:53 +0500] "GET /project_4/LoginCtl HTTP/1.1" 200 6262
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:31:58 +0500] "GET /project_4/LoginCtl?operation=logout HTTP/1.1" 200 4432
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:32:09 +0500] "GET /project_4/LoginCtl HTTP/1.1" 200 4412
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:32:34 +0500] "GET /project_4/LoginCtl HTTP/1.1" 200 4412
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:32:54 +0500] "POST /project_4/LoginCtl HTTP/1.1" 200 4390
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:42:42 +0500] "GET /project_4/LoginCtl?operation=logout HTTP/1.1" 200 4432
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:42:55 +0500] "GET /project_4/LoginCtl HTTP/1.1" 200 4412
+0:0:0:0:0:0:0:1 - - [16/Sep/2020:14:45:43 +0500] "POST /project_4/LoginCtl HTTP/1.1" 200 4452

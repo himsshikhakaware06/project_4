@@ -1,0 +1,82 @@
+package in.co.rays.project_4.controller;
+
+import java.util.List;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
+import com.mysql.jdbc.DatabaseMetaDataUsingInfoSchema;
+
+import in.co.rays.project_4.bean.BaseBean;
+import in.co.rays.project_4.bean.CourseBean;
+import in.co.rays.project_4.model.CourseModel;
+import in.co.rays.project_4.util.DataUtility;
+import in.co.rays.project_4.util.PropertyReader;
+
+@WebServlet(name="CourseListCtl", urlPatterns="/ctl/CourseListCtl")
+public class CourseListCtl extends BaseCtl {
+	
+	private static Logger log=Logger.getLogger(CourseListCtl.class);
+	
+	protected BaseBean populateBean(HttpServletRequest request){
+		log.debug("CourseListCtl populatBean started");
+		
+		CourseBean bean= new CourseBean();
+		bean.setCourseName(DataUtility.getStringData(request.getParameter("CourseName")));
+		bean.setDescription(DataUtility.getStringData(request.getParameter("description")));
+		bean.setId(DataUtility.getLong(request.getParameter("id")));
+		
+		log.debug("CourseListCtl populateBean method ended");
+		return null;
+		
+	}
+	protected void goGet(HttpServletRequest request, HttpServletResponse response){
+		log.debug("CourseListCtl doGet method started");
+		
+		List list=null;
+		int pageNo=1;
+		int pageSize=DataUtility.getInt(PropertyReader.getValue("page.size"));
+		CourseBean bean=(CourseBean) populateBean(request);
+		String op=DataUtility.getString(request.getParameter("operation"));
+		
+		String[] ids= request.getParameterValues("ids");
+		CourseModel model = new CourseModel();
+		try {
+			list= model.search(bean, pageNo, pageSize);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
+	@Override
+	protected String getView() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
